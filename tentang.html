@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMath - Tentang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+    <style>
+        /* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+/* Container utama tetap 1440x1024 */
+.canvas-container {
+    width: 1440px;
+    height: 1024px;
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.top-label {
+    height: 50px;
+    color: #666666;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.inner-box {
+    flex: 1;
+    margin: 0 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+    height: 80px;
+    background-color: #0042aa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    color: #ffffff;
+}
+
+.logo {
+    font-size: 32px;
+    letter-spacing: 0.5px;
+}
+
+.menu-items {
+    display: flex;
+    gap: 25px;
+}
+
+.menu-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.menu-link.active {
+    border-bottom: 4px solid #ffffff;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+}
+
+/* Area Utama Latar Biru Navy Gelap */
+.main-content {
+    flex: 1;
+    background-color: #0d2c61; /* Biru tua gelap sesuai background luar gambar */
+    padding: 40px 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    overflow: hidden;
+
+    background-image: url('image/tentang.avif'); 
+    background-size: cover;       /* Gambar otomatis menyesuaikan ukuran kotak */
+    background-position: center;  /* Gambar selalu berada di tengah */
+    background-repeat: no-repeat; /* Mencegah gambar berulang/patah-patah */
+}
+
+/* SISI KIRI - Susunan Kartu */
+.left-column {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Pengaturan Kartu Informasi Kiri */
+.info-card {
+    background-color: #83b6e6; /* Warna biru muda pastel kartu */
+    border: 4px solid #0042aa;
+    border-radius: 25px;
+    padding: 20px 30px;
+}
+
+.info-card h2 {
+    font-size: 36px;
+    color: #0d2c61;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+.info-card p {
+    font-size: 18px;
+    color: #0d2c61;
+    line-height: 1.4;
+}
+
+/* List Khusus Misi */
+.info-card ul {
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+.info-card li {
+    font-size: 18px;
+    color: #0d2c61;
+    margin-bottom: 6px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.info-card li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #0d2c61;
+    font-size: 22px;
+    top: -3px;
+}
+
+/* SISI KANAN - Kotak FAQ dengan Fitur Scroll */
+.right-column-faq {
+    width: 48%;
+    background-color: #83b6e6;
+    border: 4px solid #0042aa;
+    border-radius: 25px;
+    padding: 30px;
+    max-height: 100%; /* Membatasi tinggi agar tidak meluber keluar canvas */
+}
+
+/* Pembungkus konten internal FAQ yang bisa di-scroll */
+.faq-scroll-wrapper {
+    height: 100%;
+    overflow-y: auto; /* Otomatis memicu scrollbar jika FAQ bertambah */
+    padding-right: 15px;
+}
+
+.right-column-faq h2 {
+    font-size: 40px;
+    color: #0d2c61;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+/* Struktur Tanya Jawab */
+.faq-item {
+    margin-bottom: 24px;
+}
+
+.faq-question {
+    font-size: 20px;
+    color: #0d2c61;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.faq-answer {
+    font-size: 18px;
+    color: #0d2c61;
+    line-height: 1.4;
+}
+
+/* --- Kustomisasi Desain Scrollbar FAQ --- */
+.faq-scroll-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.faq-scroll-wrapper::-webkit-scrollbar-track {
+    background: rgba(13, 44, 97, 0.1);
+    border-radius: 10px;
+}
+
+.faq-scroll-wrapper::-webkit-scrollbar-thumb {
+    background: #0042aa;
+    border-radius: 10px;
+}
+
+.faq-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #0d2c61;
+}
+    </style>>
+</head>
+<body>
+
+    <div class="canvas-container">
+        
+        <div class="top-label">Tentang</div>
+        
+        <div class="inner-box">
+            
+            <nav class="navbar">
+                <div class="logo">EMath</div>
+                <div class="menu-items">
+                    <a href="beranda.html" class="menu-link">Beranda</a>
+                    <a href="materi.html" class="menu-link">Materi</a>
+                    <a href="latihan.html" class="menu-link">Latihan</a>
+                    <a href="rumus.html" class="menu-link">Rumus</a>
+                    <a href="tentang.html" class="menu-link active">Tentang</a>
+                    <a href="kontak.html" class="menu-link">Kontak</a>
+                </div>
+                <div class="search-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+            </nav>
+            
+            <main class="main-content">
+                
+                <div class="left-column">
+                    
+                    <div class="info-card">
+                        <h2>Tentang EMath</h2>
+                        <p>EMath adalah platform pembelajaran matematika untuk siswa SMA kelas 10, 11 dan 12.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h2>VISI</h2>
+                        <p>Membantu siswa memahami matematika dengan cara yang lebih mudah dan interaktif.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h2>MISI</h2>
+                        <ul>
+                            <li>Menyediakan materi lengkap dan jelas</li>
+                            <li>Memberikan latihan soal interaktif</li>
+                            <li>Membantu persiapan ujian sekolah dan UTBK</li>
+                            <li>Membuat belajar matematika lebih menyenangkan</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="right-column-faq">
+                    <div class="faq-scroll-wrapper">
+                        <h2>FAQ (Pertanyaan)</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah website ini gratis?</div>
+                            <div class="faq-answer">Ya, seluruh materi dasar dapat diakses secara gratis.</div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah tersedia latihan soal?</div>
+                            <div class="faq-answer">Ya, tersedia latihan pilihan ganda, isian singkat, dan try out UTBK.</div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Materi apa saja yang tersedia?</div>
+                            <div class="faq-answer">Materi tersedia untuk kelas 10, 11 dan 12</div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Apakah ada pembahasan langkah demi langkah?</div>
+                            <div class="faq-answer">Ya, sebagian besar soal memiliki pembahasan detail</div>
+                        </div>
+
+                        </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

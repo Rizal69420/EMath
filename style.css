@@ -1,0 +1,89 @@
+/* Reset basic margin dan padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a; /* Warna latar belakang gelap di luar canvas */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+/* Container dengan ukuran fixed sesuai permintaan */
+.canvas-container {
+    width: 1440px;
+    height: 1024px;
+    background-color: #1c1c1c; /* Background hitam area atas */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Memberi efek bayangan agar terlihat rapi saat dibuild */
+}
+
+/* Header kecil "Main Menu" */
+.top-header {
+    height: 50px;
+    color: #666666;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    background-color: #1c1c1c;
+}
+
+/* Area Biru Utama */
+.main-content {
+    flex: 1;
+    margin: 0 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* Kode untuk menambahkan gambar background */
+    background-image: url('image/MainMenu.avif');
+    background-size: cover;       /* Memastikan gambar menutupi seluruh area */
+    background-position: center;  /* Gambar selalu di tengah */
+    background-repeat: no-repeat;
+}
+/* Teks "Welcome To" */
+.welcome-text {
+    font-size: 48px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Teks Utama "Math Ebook For High School" */
+.title-text {
+    font-size: 64px;
+    color: #ffffff;
+    font-weight: normal;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Tombol Masuk */
+.btn-masuk {
+    display: inline-block;
+    background-color: #007bff; /* Warna biru tombol */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 42px;
+    padding: 15px 70px;
+    border-radius: 20px; /* Membuat sudut tombol tumpul/rounded */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Efek ketika tombol disorot (Hover) */
+.btn-masuk:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMath - Latihan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+    <style>
+        /* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+/* Container utama 1440x1024 */
+.canvas-container {
+    width: 1440px;
+    height: 1024px;
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.top-label {
+    height: 50px;
+    color: #666666;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.inner-box {
+    flex: 1;
+    margin: 0 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+    height: 80px;
+    background-color: #0042aa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    color: #ffffff;
+}
+
+.logo {
+    font-size: 32px;
+    letter-spacing: 0.5px;
+}
+
+.menu-items {
+    display: flex;
+    gap: 25px;
+}
+
+.menu-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.menu-link.active {
+    border-bottom: 4px solid #ffffff;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+}
+
+/* Konten Utama */
+.main-content {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url('image/latihan.png'); 
+    background-size: cover;       /* Gambar otomatis menyesuaikan ukuran kotak */
+    background-position: center;  /* Gambar selalu berada di tengah */
+    background-repeat: no-repeat; /* Mencegah gambar berulang/patah-patah */
+}
+
+.blue-border-card {
+    width: 100%;
+    height: 100%;
+    border: 8px solid #0056df;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Pembungkus Kartu dan Tombol */
+.exercise-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 22%;
+}
+
+/* Kartu Biru Muda */
+.card {
+    background-color: #b0cce4;
+    border: 3px solid #1e4477;
+    border-radius: 30px;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 28px;
+    color: #1e4477;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.card p {
+    font-size: 22px;
+    color: #1e4477;
+    margin-top: 5px;
+}
+
+/* Tombol Mulai */
+.btn-mulai {
+    background-color: #002e77;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 45px;
+    border-radius: 12px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-mulai:hover {
+    background-color: #001f52;
+    transform: scale(1.05);
+}
+
+.btn-mulai:active {
+    transform: scale(0.95);
+}
+    </style>
+</head>
+<body>
+
+    <div class="canvas-container">
+        
+        <div class="top-label">Latihan</div>
+        
+        <div class="inner-box">
+            
+            <nav class="navbar">
+                <div class="logo">EMath</div>
+                <div class="menu-items">
+                    <a href="beranda.html" class="menu-link">Beranda</a>
+                    <a href="materi.html" class="menu-link">Materi</a>
+                    <a href="latihan.html" class="menu-link active">Latihan</a>
+                    <a href="rumus.html" class="menu-link">Rumus</a>
+                    <a href="tentang.html" class="menu-link">Tentang</a>
+                    <a href="kontak.html" class="menu-link">Kontak</a>
+                </div>
+                <div class="search-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+            </nav>
+            
+            <main class="main-content">
+                <div class="blue-border-card">
+                    
+                    <div class="exercise-item">
+                        <div class="card">
+                            <h3>Statistika</h3>
+                            <p>10 Soal</p>
+                            <p>Easy</p>
+                        </div>
+                        <a href="#" class="btn-mulai">Mulai</a>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="card">
+                            <h3>Trigonometri Dasar</h3>
+                            <p>20 Soal</p>
+                            <p>Medium</p>
+                        </div>
+                        <a href="#" class="btn-mulai">Mulai</a>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="card">
+                            <h3>Integral</h3>
+                            <p>15 Soal</p>
+                            <p>Hard</p>
+                        </div>
+                        <a href="#" class="btn-mulai">Mulai</a>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="card">
+                            <h3>Tryout UTBK</h3>
+                            <p>40 Soal</p>
+                            <p>Expert</p>
+                        </div>
+                        <a href="#" class="btn-mulai">Mulai</a>
+                    </div>
+
+                </div>
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

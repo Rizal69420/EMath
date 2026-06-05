@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMath - Kontak</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+    <style>
+        /* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+/* Container utama tetap 1440x1024 */
+.canvas-container {
+    width: 1440px;
+    height: 1024px;
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.top-label {
+    height: 50px;
+    color: #666666;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.inner-box {
+    flex: 1;
+    margin: 0 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+    height: 80px;
+    background-color: #0042aa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    color: #ffffff;
+}
+
+.logo {
+    font-size: 32px;
+    letter-spacing: 0.5px;
+}
+
+.menu-items {
+    display: flex;
+    gap: 25px;
+}
+
+.menu-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.menu-link.active {
+    border-bottom: 4px solid #ffffff;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+}
+
+/* Area Konten Utama */
+.main-content {
+    flex: 1;
+    background-color: #0056df; /* Warna biru cerah background sesuai gambar */
+    padding: 60px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    background-image: url('image/kontak.webp'); 
+    background-size: cover;       /* Gambar otomatis menyesuaikan ukuran kotak */
+    background-position: center;  /* Gambar selalu berada di tengah */
+    background-repeat: no-repeat; /* Mencegah gambar berulang/patah-patah */
+}
+
+/* --- KIRI: FORMULIR INPUT --- */
+.form-container {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field {
+    width: 100%;
+    height: 65px;
+    background-color: #ffffff;
+    border: 4px solid #0042aa;
+    border-radius: 30px;
+    padding: 0 30px;
+    font-size: 24px;
+    color: #333333;
+    font-family: sans-serif; /* Nyaman untuk mengetik data */
+    margin-bottom: 30px;
+    outline: none;
+}
+
+.input-area {
+    width: 100%;
+    height: 250px;
+    background-color: #ffffff;
+    border: 4px solid #0042aa;
+    border-radius: 30px;
+    padding: 20px 30px;
+    font-size: 24px;
+    color: #333333;
+    font-family: sans-serif;
+    margin-bottom: 40px;
+    resize: none; /* Mengunci ukuran teks area agar tidak ditarik siswa */
+    outline: none;
+}
+
+/* Efek saat form disentuh klik focus */
+.input-field:focus, .input-area:focus {
+    border-color: #002e77;
+}
+
+.btn-kirim {
+    width: 150px;
+    height: 60px;
+    background-color: #002e77;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 24px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-kirim:hover {
+    background-color: #001f52;
+}
+
+.btn-kirim:active {
+    transform: scale(0.95);
+}
+
+/* --- KANAN: KARTU SOSIAL MEDIA --- */
+.social-container {
+    width: 38%;
+}
+
+.social-card {
+    background-color: #ffffff;
+    border-radius: 35px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.social-card h2 {
+    font-size: 48px;
+    color: #0042aa;
+    margin-bottom: 10px;
+}
+
+.social-sub {
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #0056df;
+    line-height: 1.4;
+    margin-bottom: 40px;
+}
+
+.social-icons-grid {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Kotak Lingkaran/Wadah Logo */
+.icon-link {
+    width: 80px;
+    height: 80px;
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.icon-link img {
+    width: 55px;
+    height: 55px;
+}
+
+/* Mengatur background masing-masing logo sesuai brand asli */
+.icon-wa { background-color: #25D366; }
+.icon-ig { background-color: #E1306C; }
+.icon-dc { background-color: #5865F2; }
+
+.icon-link:hover {
+    transform: scale(1.1);
+}
+
+/* Tombol Tulisan Copy di Bawah Logo */
+.copy-text {
+    font-size: 14px;
+    color: #0042aa;
+    cursor: pointer;
+    text-decoration: underline;
+    user-select: none; /* Mencegah teks terblok saat di-double click */
+}
+
+.copy-text:hover {
+    color: #001f52;
+}
+    </style>
+</head>
+<body>
+
+    <div class="canvas-container">
+        
+        <div class="top-label">Kontak</div>
+        
+        <div class="inner-box">
+            
+            <nav class="navbar">
+                <div class="logo">EMath</div>
+                <div class="menu-items">
+                    <a href="beranda.html" class="menu-link">Beranda</a>
+                    <a href="materi.html" class="menu-link">Materi</a>
+                    <a href="latihan.html" class="menu-link">Latihan</a>
+                    <a href="rumus.html" class="menu-link">Rumus</a>
+                    <a href="tentang.html" class="menu-link">Tentang</a>
+                    <a href="kontak.html" class="menu-link active">Kontak</a>
+                </div>
+                <div class="search-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+            </nav>
+            
+            <main class="main-content">
+                
+                <div class="form-container">
+                    <form id="contactForm" onsubmit="handleKirim(event)">
+                        <input type="text" id="inputNama" class="input-field" placeholder="Nama">
+                        <input type="email" id="inputEmail" class="input-field" placeholder="Email">
+                        <input type="tel" id="inputPonsel" class="input-field" placeholder="Ponsel">
+                        <textarea id="inputPesan" class="input-area" placeholder="Pesan"></textarea>
+                        
+                        <button type="submit" class="btn-kirim">Kirim</button>
+                    </form>
+                </div>
+
+                <div class="social-container">
+                    <div class="social-card">
+                        <h2>Hubungi Kami</h2>
+                        <p class="social-sub">Ada pertanyaan atau masukan?<br>Hubungi tim EMath melalui Kontak berikut.</p>
+                        
+                        <div class="social-icons-grid">
+                            <div class="icon-item">
+                                <a href="#" class="icon-link icon-wa">
+                                    <img src="image/wa.svg" alt="WhatsApp">
+                                </a>
+                                <span class="copy-text" onclick="salinKontak('Placeholder WA')">Copy</span>
+                            </div>
+
+                            <div class="icon-item">
+                                <a href="#" class="icon-link icon-ig">
+                                    <img src="image/ig.svg" alt="Instagram">
+                                </a>
+                                <span class="copy-text" onclick="salinKontak('Placeholder IG')">Copy</span>
+                            </div>
+
+                            <div class="icon-item">
+                                <a href="#" class="icon-link icon-dc">
+                                    <img src="image/dc.svg" alt="Discord">
+                                </a>
+                                <span class="copy-text" onclick="salinKontak('Placeholder DC')">Copy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Fungsi Interaktif untuk Tombol Kirim
+        function handleKirim(event) {
+            event.preventDefault(); // Mencegah halaman reload saat form dikirim
+            
+            // Ambil data dari elemen input
+            const nama = document.getElementById('inputNama').value.trim();
+            const email = document.getElementById('inputEmail').value.trim();
+            const ponsel = document.getElementById('inputPonsel').value.trim();
+            const pesan = document.getElementById('inputPesan').value.trim();
+
+            // Cek satu per satu jika kosong
+            if (nama === "") {
+                alert("Nama belum diisi");
+            } else if (email === "") {
+                alert("Email belum diisi");
+            } else if (ponsel === "") {
+                alert("Ponsel belum diisi");
+            } else if (pesan === "") {
+                alert("Pesan belum diisi");
+            } else {
+                alert("Pesan Terkirim");
+                document.getElementById('contactForm').reset(); // Mengosongkan form kembali setelah sukses
+            }
+        }
+
+        // Fungsi Interaktif untuk Tombol Copy Text
+        function salinKontak(textPlaceholder) {
+            navigator.clipboard.writeText(textPlaceholder).then(() => {
+                alert('Teks berhasil disalin: "' + textPlaceholder + '"');
+            }).catch(err => {
+                console.error('Gagal menyalin teks: ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>

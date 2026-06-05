@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMath - Rumus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap" rel="stylesheet">
+    <style>
+        /* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+/* Container utama 1440x1024 */
+.canvas-container {
+    width: 1440px;
+    height: 1024px;
+    background-color: #1c1c1c;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.top-label {
+    height: 50px;
+    color: #666666;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.inner-box {
+    flex: 1;
+    margin: 0 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+    height: 80px;
+    background-color: #0042aa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    color: #ffffff;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 32px;
+    letter-spacing: 0.5px;
+}
+
+.menu-items {
+    display: flex;
+    gap: 25px;
+}
+
+.menu-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.menu-link.active {
+    border-bottom: 4px solid #ffffff;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+}
+
+/* Area Utama (Latar Biru Tua) */
+.main-content {
+    flex: 1;
+    background-color: #004dd0; /* Warna dasar biru sesuai gambar */
+    padding: 45px 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    overflow: hidden; /* Mencegah seluruh halaman ikut ter-scroll */
+    
+    background-image: url('image/rumus.png'); 
+    background-size: cover;       /* Gambar otomatis menyesuaikan ukuran kotak */
+    background-position: center;  /* Gambar selalu berada di tengah */
+    background-repeat: no-repeat; /* Mencegah gambar berulang/patah-patah */
+}
+
+/* --- PANEL KIRI: SIDEBAR KATEGORI RUMUS --- */
+.sidebar-topics {
+    width: 35%;
+    background-color: #00368c; /* Biru super gelap kontras */
+    border: 4px solid #001f5c;
+    border-radius: 25px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+.sidebar-header {
+    font-size: 18px;
+    color: #8bb6ff;
+    border: 2px solid #8bb6ff;
+    border-radius: 10px;
+    padding: 6px 12px;
+    text-align: center;
+    align-self: flex-start;
+    margin-bottom: 30px;
+}
+
+/* Wadah penampung list topik dengan kemampuan scroll */
+.topics-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    overflow-y: auto; /* Memunculkan scroll jika materi bertambah banyak */
+    padding-right: 5px;
+}
+
+.topic-item {
+    font-size: 32px;
+    color: #ffffff;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+    transition: all 0.2s ease;
+}
+
+/* Style khusus untuk Kategori Aktif (Aljabar yang berbentuk kapsul putih) */
+.topic-item.active {
+    background-color: #ffffff;
+    color: #004dd0;
+    border-radius: 25px;
+    font-weight: bold;
+    padding: 5px 30px;
+    width: auto;
+    min-width: 180px;
+}
+
+/* --- PANEL KANAN: AREA TAMPILAN RUMUS --- */
+.formula-display {
+    width: 62%;
+    background-color: #00368c;
+    border: 4px solid #001f5c;
+    border-radius: 25px;
+    padding: 40px;
+    max-height: 100%;
+}
+
+/* Wadah isi rumus dengan kemampuan scroll */
+.formula-scroll-content {
+    height: 100%;
+    overflow-y: auto; /* Memunculkan scroll otomatis jika baris rumus melampaui batas tinggi */
+    padding-right: 15px;
+}
+
+.formula-row {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 22px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+}
+
+/* --- MODIFIKASI SCROLLBAR (Agar Terlihat Modern & Rapi) --- */
+.topics-list::-webkit-scrollbar,
+.formula-scroll-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.topics-list::-webkit-scrollbar-track,
+.formula-scroll-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.topics-list::-webkit-scrollbar-thumb,
+.formula-scroll-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.topics-list::-webkit-scrollbar-thumb:hover,
+.formula-scroll-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+    </style>
+</head>
+<body>
+
+    <div class="canvas-container">
+        
+        <div class="top-label">Rumus</div>
+        
+        <div class="inner-box">
+            
+            <nav class="navbar">
+                <div class="logo">EMath</div>
+                <div class="menu-items">
+                    <a href="beranda.html" class="menu-link">Beranda</a>
+                    <a href="materi.html" class="menu-link">Materi</a>
+                    <a href="latihan.html" class="menu-link">Latihan</a>
+                    <a href="rumus.html" class="menu-link active">Rumus</a>
+                    <a href="tentang.html" class="menu-link">Tentang</a>
+                    <a href="kontak.html" class="menu-link">Kontak</a>
+                </div>
+                <div class="search-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+            </nav>
+            
+            <main class="main-content">
+                
+                <aside class="sidebar-topics">
+                    <div class="sidebar-header">Kumpulan Rumus Matematika</div>
+                    <div class="topics-list">
+                        <a href="#" class="topic-item active">Aljabar</a>
+                        <a href="#" class="topic-item">Trigonometri</a>
+                        <a href="#" class="topic-item">Geometri</a>
+                        <a href="#" class="topic-item">Kalkulus</a>
+                        <a href="#" class="topic-item">Statistika</a>
+                        <a href="#" class="topic-item">Peluang</a>
+                        <a href="#" class="topic-item">Matriks</a>
+                        <a href="#" class="topic-item">Polinomial</a>
+                    </div>
+                </aside>
+
+                <section class="formula-display">
+                    <div class="formula-scroll-content">
+                        <div class="formula-row">(a+b)² = a² + 2ab + b²</div>
+                        <div class="formula-row">(a-b)² = a² - 2ab + b²</div>
+                        <div class="formula-row">a² - b² = (a+b)(a-b)</div>
+                        <div class="formula-row">a² + b² = (a+b)² - 2ab</div>
+                        <div class="formula-row">(a+b)³ = a³ + b³ + 3ab(a+b)</div>
+                        <div class="formula-row">(a-b)³ = a³ - b³ - 3ab(a-b)</div>
+                        <div class="formula-row">a³ - b³ = (a-b)(a² + ab + b²)</div>
+                        <div class="formula-row">a³ + b³ = (a+b)(a² - ab + b²)</div>
+                        <div class="formula-row">√(a+b ± 2√ab) = √a ± √b</div>
+                        <div class="formula-row">x₁,₂ = (-b ± √(b² - 4ac)) / 2a</div>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
